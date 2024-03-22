@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>JSF Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="mb-4 text-center">Register</h2>
+                <h:form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h:outputLabel for="firstname" value="First Name"/>
+                            <h:inputText id="firstname" class="form-control"
+                                         value="#{registerBean.firstname}"
+                                         placeholder="Enter your first name"
+                                         required="true"
+                                         requiredMessage="First name is required"
+                            />
+                            <h:message for="firstname" styleClass="text-danger"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h:outputLabel for="lastname" value="Last Name"/>
+                            <h:inputText id="lastname" class="form-control"
+                                         value="#{registerBean.lastname}"
+                                         placeholder="Enter your last name"
+                                         required="true"
+                                         requiredMessage="Last name is required"
+                            />
+                            <h:message for="lastname" styleClass="text-danger"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h:outputLabel for="email" value="Email"/>
+                        <h:inputText id="email" class="form-control"
+                                     value="#{registerBean.email}"
+                                     validator="#{registerBean.validateEmail}"
+                                     placeholder="Enter your email"
+                                     required="true"
+                                     requiredMessage="Email is required"
+                        />
+                        <h:message for="email" styleClass="text-danger"/>
+                    </div>
+                    <div class="mb-3">
+                        <h:outputLabel for="username" value="Username"/>
+                        <h:inputText id="username" class="form-control"
+                                     value="#{registerBean.username}"
+                                     validator="#{registerBean.validateUsername}"
+                                     placeholder="Enter your username"
+                                     required="true"
+                                     requiredMessage="Username is required"
+                        />
+                        <h:message for="username" styleClass="text-danger"/>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h:outputLabel for="password" value="Password"/>
+                            <h:inputSecret id="password" class="form-control"
+                                           value="#{registerBean.password}"
+                                           validator="#{registerBean.validatePassword}"
+                                           placeholder="Enter your password"
+                                           required="true"
+                                           requiredMessage="Password is required"
+                            />
+                            <h:message for="password" styleClass="text-danger"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h:outputLabel for="confirmPassword" value="Confirm Password"/>
+                            <h:inputSecret id="confirmPassword" class="form-control"
+                                           value="#{registerBean.confirmPassword}"
+                                           validator="#{registerBean.validateConfirmPassword}"
+                                           placeholder="Confirm your password"
+                                           required="true"
+                                           requiredMessage="Confirm password is required"
+                            />
+                            <h:message for="confirmPassword" styleClass="text-danger"/>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h:commandButton value="Register" action="#{registerBean.register}" class="btn btn-primary"/>
+                    </div>
+                </h:form>
+                <a href="login.xhtml" class="d-block mt-3 text-center">Already have an account? Login</a>
+            </div>
+        </div>
+    </div>
+
+    <h:outputScript src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"/>
+</h:body>
+</html>
