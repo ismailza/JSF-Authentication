@@ -33,4 +33,22 @@ public class UserService {
         return userDAO.create(user);
     }
 
+    /**
+     * Check if an email is already used
+     * @param email email to check
+     * @return true if the email is already used, false otherwise
+     */
+    public boolean checkEmail(String email) {
+        return userDAO.checkEmail(email);
+    }
+
+    /**
+     * Check if a username is already used
+     * @param username username to check
+     * @return true if the username is already used, false otherwise
+     */
+    public boolean checkUsername(String username) {
+        return userDAO.checkUsername(username);
+    }
+
 }

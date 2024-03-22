@@ -51,4 +51,48 @@ public class UserDAO {
         }
     }
 
+    /**
+     * Check if an email is already used
+     * @param email email to check
+     * @return true if the email is already used, false otherwise
+     */
+    public boolean checkEmail(String email) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            User user = session.createQuery("from User where email = :email", User.class)
+                    .setParameter("email", email)
+                    .uniqueResult();
+            transaction.commit();
+            return user != null;
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Check if a username is already used
+     * @param username username to check
+     * @return true if the username is already used, false otherwise
+     */
+    public boolean checkUsername(String username) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().getCurrentSession()) {
+            transaction = session.beginTransaction();
+            User user = session.createQuery("from User where username = :username", User.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
+            transaction.commit();
+            return user != null;
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
