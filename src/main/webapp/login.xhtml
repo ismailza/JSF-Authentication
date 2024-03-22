@@ -17,20 +17,22 @@
                 <h:messages class="alert alert-danger" globalOnly="true"/>
                 <h:form class="form-signin row g-3 mb-2">
                     <div class="form-group">
-                        <label for="login">Login</label>
+                        <h:outputLabel for="login" value="Login"/>
                         <h:inputText id="login" class="form-control"
                                      value="#{loginBean.login}"
                                      validator="#{loginBean.validateLogin}"
+                                     placeholder="Login"
                                      required="true"
                                      requiredMessage="Login is required"
                         />
                         <h:message for="login" styleClass="errorBlock text-danger" />
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <h:outputLabel for="password" value="Password"/>
                         <h:inputSecret id="password" class="form-control"
                                        value="#{loginBean.password}"
                                        validator="#{loginBean.validatePassword}"
+                                        placeholder="Password"
                                        required="true"
                                        requiredMessage="Password is required"/>
                         <h:message for="password" styleClass="errorBlock text-danger" />
@@ -38,6 +40,7 @@
                     <h:commandButton value="Login" class="btn btn-primary btn-block mb-2 float-end"
                                      action="#{loginBean.authenticate}"/>
                 </h:form>
+                <a href="register.xhtml" class="text-center">Register</a>
             </div>
         </div>
     </div>
